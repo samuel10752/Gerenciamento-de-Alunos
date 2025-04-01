@@ -1,0 +1,11 @@
+CREATE TABLE alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE notas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    nota FLOAT NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+);
