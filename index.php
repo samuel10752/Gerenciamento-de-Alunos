@@ -145,21 +145,20 @@ $alunos = listarAlunos($conn);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>{$row['nome']}</td>
-                            <td>{$row['email']}</td>
-                            <td>{$row['curso']}</td>
-                            <td>{$row['sexo']}</td>
-
-                            <td class='actions'>
-                                <!-- Botão de Edztar -->
-                                <a href='?edit_id=<?= {$row['id']} ?>' class='edit'>Editar</a>
-                                <!-- Botão de Deletar -->
-                                <form method='post' style='display:inline;'>
-                                    <input type='hidden' name='delete_id' value='<?= {$row['id']} ?>''>
-                                    <button type='submit' class='delete'>Deletar</button>
-                                </form>
-                            </td>
-                        </tr>";
+                    <td>{$row['nome']}</td>
+                    <td>{$row['email']}</td>
+                    <td>{$row['curso']}</td>
+                    <td>{$row['sexo']}</td>
+                    <td class='actions'>
+                        <!-- Botão de Editar -->
+                        <a href='?edit_id={$row['id']}' class='edit'>Editar</a>
+                        <!-- Botão de Deletar -->
+                        <form method='post' style='display:inline;'>
+                            <input type='hidden' name='delete_id' value='{$row['id']}'>
+                            <button type='submit' class='delete'>Deletar</button>
+                        </form>
+                    </td>
+                  </tr>";
                 }
             } else {
                 echo "<tr><<td colspan='6'>Nenhum aluno cadastrado.</td></tr>";
