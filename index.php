@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $message = "Erro ao deletar: " . $conn->error;
         }
-    } elseif (isset($_POST['add_nome'], $_POST['add_email'], $_POST['add_curso'], $_POST['add_sexo'])) {
-        // Adicionar aluno
+    } elseif (isset($_POST['submit']) && isset($_POST['add_nome'], $_POST['add_email'], $_POST['add_curso'], $_POST['add_sexo'])) {
+        // Adicionar aluno somente se o botão foi acionado
         $nome = $_POST['add_nome'];
         $email = $_POST['add_email'];
         $curso = $_POST['add_curso'];
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $message = "Erro ao inserir: " . $conn->error;
         }
-    } elseif (isset($_POST['id'], $_POST['nome'], $_POST['email'], $_POST['curso'], $_POST['sexo'])) {
+    } elseif (isset($_POST['submit']) && isset($_POST['id'], $_POST['nome'], $_POST['email'], $_POST['curso'], $_POST['sexo'])) {
         // Editar aluno
         $id = $_POST['id'];
         $nome = $_POST['nome'];
@@ -39,12 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "UPDATE alunos SET nome='$nome', email='$email', curso='$curso', sexo='$sexo' WHERE id=$id";
         if ($conn->query($sql) === TRUE) {
             $message = "Registro atualizado com sucesso!";
-            // Limpa os campos após editar
-            $_POST = [];
         } else {
             $message = "Erro ao atualizar: " . $conn->error;
         }
     }
+
+    // Redireciona para evitar duplicação ao recarregar
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
 }
 
 // Recupera os dados do aluno para edição (se 'editar' foi clicado)
@@ -55,7 +57,6 @@ if (isset($_GET['edit_id'])) {
     $editAluno = $result->fetch_assoc();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -186,23 +187,23 @@ if (isset($_GET['edit_id'])) {
         <?php if ($editAluno): ?>
             <h2>Editar Aluno</h2>
             <form method="post">
-                <input type="hidden" name="id" value="<?= $editAluno['id']; ?>">
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" value="<?= $editAluno['nome']; ?>" required>
+                <label for="add_nome">Nome:</label>
+                <input type="text" name="add_nome" required placeholder="Digite o nome">
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" value="<?= $editAluno['email']; ?>" required>
+                <label for="add_email">Email:</label>
+                <input type="email" name="add_email" required placeholder="Digite o email">
 
-                <label for="curso">Curso:</label>
-                <input type="text" name="curso" value="<?= $editAluno['curso']; ?>" required>
+                <label for="add_curso">Curso:</label>
+                <input type="text" name="add_curso" required placeholder="Digite o curso">
 
-                <label for="sexo">Sexo:</label>
-                <select name="sexo" required>
-                    <option value="masculino" <?= $editAluno['sexo'] == 'masculino' ? 'selected' : ''; ?>>Masculino</option>
-                    <option value="feminino" <?= $editAluno['sexo'] == 'feminino' ? 'selected' : ''; ?>>Feminino</option>
+                <label for="add_sexo">Sexo:</label>
+                <select name="add_sexo" required>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
                 </select>
 
-                <button type="submit">Salvar Alterações</button>
+                <!-- Adicionando atributo 'name' -->
+                <button type="submit" name="submit">Adicionar</button>
             </form>
         <?php else: ?>
             <!-- Formulário de Adição -->
@@ -265,4 +266,3 @@ if (isset($_GET['edit_id'])) {
         </table>
     </div>
 </body>
-</
