@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require 'config/config.php';
 
 $sql = "SELECT * FROM alunos";
 $result = $conn->query($sql);
