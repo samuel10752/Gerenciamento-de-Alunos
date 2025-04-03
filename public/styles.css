@@ -1,0 +1,254 @@
+/* Estilo Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.message {
+    text-align: center;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+form {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+button {
+    display: block;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo Geral dos Botões */
+button,
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    /* Tamanho fixo para todos os botões */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Remove o sublinhado em links */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Botão "Adicionar Aluno" */
+.button {
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #4caf50, #43a047);
+    /* Verde gradiente */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    background: linear-gradient(to right, #43a047, #388e3c);
+    transform: scale(1.05);
+    /* Leve crescimento ao passar o mouse */
+}
+
+/* Botão "Editar" */
+.edit {
+    background: linear-gradient(to right, #ffc107, #f9a825);
+    /* Amarelo gradiente */
+    color: #333333;
+    padding: 8px 14px;
+}
+
+.edit:hover {
+    background: linear-gradient(to right, #f9a825, #f57f17);
+    transform: scale(1.05);
+}
+
+/* Botão "Deletar" */
+.delete {
+    background: linear-gradient(to right, #e53935, #c62828);
+    /* Vermelho gradiente */
+    padding: 8px 14px;
+}
+
+.delete:hover {
+    background: linear-gradient(to right, #c62828, #b71c1c);
+    transform: scale(1.05);
+}
+
+/* Botão "Adicionar Aluno" */
+.add {
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #4caf50, #43a047);
+    /* Verde gradiente */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.add:hover {
+    background: linear-gradient(to right, #43a047, #388e3c);
+    /* Leve crescimento ao passar o mouse */
+}
+
+/* Botão "Editar Aluno" */
+.edit_aluno {
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #4caf50, #43a047);
+    /* Verde gradiente */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.edit_aluno:hover {
+    background: linear-gradient(to right, #43a047, #388e3c);
+}
+
+/* Contêiner de Ações */
+.actions {
+    display: flex;
+    gap: 10px; /* Espaço entre os botões */
+    justify-content: flex-start; /* Alinhamento à esquerda */
+}
+
+/* Botão "Ver Detalhes" */
+.actions a.details {
+    background: linear-gradient(to right, #4caf50, #388e3c); /* Verde gradiente */
+    color: #ffffff;
+    padding: 8px 14px; /* Dimensões compactas */
+    font-size: 12px; /* Texto menor */
+    font-weight: bold;
+    border-radius: 6px; /* Bordas arredondadas */
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.actions a.details:hover {
+    background: linear-gradient(to right, #388e3c, #2e7d32);
+    transform: scale(1.05); /* Efeito de hover */
+}
+
+/* Botão "Deletar" */
+.actions a.delete {
+    background: linear-gradient(to right, #e53935, #c62828); /* Vermelho gradiente */
+    color: #ffffff;
+    padding: 8px 14px; /* Dimensões iguais ao botão "Ver Detalhes" */
+    font-size: 12px; /* Texto menor */
+    font-weight: bold;
+    border-radius: 6px; /* Bordas arredondadas */
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.actions a.delete:hover {
+    background: linear-gradient(to right, #c62828, #b71c1c);
+    transform: scale(1.05); /* Efeito de hover */
+}
+
+
+/* Botões Menores e Uniformes */
+.actions a.edit,
+.actions a.details,
+.actions button.delete {
+    display: inline-block;
+    padding: 6px 10px;
+    /* Menor padding para botões compactos */
+    font-size: 12px;
+    /* Texto menor */
+    font-weight: bold;
+    border-radius: 6px;
+    /* Bordas ligeiramente arredondadas */
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Botão "Editar" */
+.actions a.edit {
+    background: linear-gradient(to right, #ffc107, #f9a825);
+    color: #333333;
+}
+
+.actions a.edit:hover {
+    background: linear-gradient(to right, #f9a825, #f57f17);
+    transform: scale(1.05);
+}
+
+.message.error {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    font-size: 18px;
+}
+
+td {
+    font-size: 16px;
+    color: #333;
+}
